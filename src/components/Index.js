@@ -4,16 +4,11 @@ class Index extends React.Component {
     render () {
         return (
             <div>
-                <nav className = "navbar navbar-light bg-light justify-content-between">
-                    
-                    <span className="navbar-brand">ELCA Connect</span>
-                    <button className="btn btn-outline-success my-2">Log in</button>
-                </nav>
                 <header className="masthead">
                     <div className="container h-100">
                         <div className="row h-100 align-items-center">
                             <div className="col-12 text-center">
-                                <h1 className="font-weight-heavy text-white">ECLA Connect</h1>
+                                <h1 className="font-weight-heavy text-white">ELCA Connect</h1>
                             </div>
                         </div>
                     </div>
