@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+import {withRouter} from 'react-router-dom'
 class LoginForm extends React.Component {
     constructor () {
         super();
@@ -21,19 +22,18 @@ class LoginForm extends React.Component {
             password : this.state.password
         })
         .then(response => {
-            console.log(response.data.token)
             localStorage.setItem('jwt', response.data.token)
-
+            this.props.history.push('/profile');
         })
         .catch(error => {
+            console.log(error)
             this.setState({
-                errors : error.response.data
+                errors : error
             })
         })
     }
 
     render () {
-        const { errors } = this.state;
         return (
             <div>
                 <form noValidate onSubmit={this.onSubmit}>
@@ -42,7 +42,7 @@ class LoginForm extends React.Component {
                         <input
                             onChange = {this.onChange}
                             value = { this.state.email }
-                            error = { errors.email }
+                            
                             type="email" className={"form-control " + (this.state.errors.email ? "is-invalid" : '')} id="email" placeholder="Enter your email address" />
                         <div className="invalid-feedback">
                             {this.state.errors.email}
@@ -53,16 +53,16 @@ class LoginForm extends React.Component {
                         <input 
                             onChange={this.onChange}
                             value={this.state.password}
-                            error={errors.password}
+                            
                             type="password" className={"form-control " + (this.state.errors.password ? "is-invalid" : '')} id="password" />
                         <div className="invalid-feedback">
                             {this.state.errors.password}
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="submit" className="btn btn-primary">Log In</button>
                 </form>
             </div>
         )
     }
 }
-export default LoginForm;
+export default withRouter(LoginForm);

@@ -1,9 +1,10 @@
 import React from "react"
-
+import Navbar from './Navbar';
 class Index extends React.Component { 
     render () {
         return (
             <div>
+                <Navbar></Navbar>
                 <header className="masthead">
                     <div className="container h-100">
                         <div className="row h-100 align-items-center">
