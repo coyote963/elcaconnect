@@ -1,9 +1,9 @@
-#ElcaConnect
+# ElcaConnect
 This is the frontend for a website designed to connect members of the evangelical lutheran church.
 
 The website is written in React, and uses Bootstrap for components. 
 
-##Installation Instructions
+## Installation Instructions
 
 First have nodejs installed
 
