@@ -8,13 +8,13 @@ const withAuth = (WrappedComponent) => {
         state = {
             userAuth : null
         };
-        async componentDidMount() {
+        componentDidMount() {
             const jwt = getJwt();
             if (!jwt) {
                 this.props.history.push('/Login');
             }
             var headers =  { "Authorization" : jwt}
-            await axios.get(process.env.REACT_APP_SERVER_URL +"getUser", {headers : headers })
+            axios.get(process.env.REACT_APP_SERVER_URL +"getUser", {headers : headers })
             .then(res => {
                 this.setState({userAuth:res.data })
             })
@@ -25,10 +25,13 @@ const withAuth = (WrappedComponent) => {
         }
         
         render() {
-            
+            if (this.state.userAuth === null ) {
+                return <h1>Loading</h1>
+            }
             return (
+                
                 <AuthContext.Provider value={this.state}>
-                    <Navbar></Navbar>
+                    <Navbar />
                     <WrappedComponent />
                 </AuthContext.Provider>
             );

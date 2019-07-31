@@ -12,9 +12,9 @@ class Navbar extends React.Component {
             
                 <a href="/" className="navbar-brand">ELCA Connect</a>
                 <AuthContext.Consumer>
-                    {userAuth =>
-                        !userAuth ? (<a href="/login/" className="btn btn-outline-success my-2">Log in</a>) 
-                        : (<button onClick={this.onLogout} className="btn btn-outline-success my-2">Log out, {userAuth.first_name}</button>)
+                    {context =>
+                        context === null ? (<a href="/login/" className="btn btn-outline-success my-2">Log in</a>) 
+                        : (<button onClick={this.onLogout} className="btn btn-outline-success my-2">Log out, {context.userAuth.first_name}</button>)
                     }
                 </AuthContext.Consumer>
             </nav>
