@@ -77,6 +77,7 @@ class Prayer extends React.Component {
                 />
                 <VerseList
                     currentStep={this.state.currentStep}
+                    bible_abbr={this.state.bible_abbr}
                     bible_id = {this.state.bible_id}
                     chapter_id = {this.state.chapter_id}
                     setVerse = {this.setVerse}
