@@ -41,9 +41,9 @@ class LoginForm extends React.Component {
                         errors : {password : "an error occurred"}
                     })
                 }
-            }
         })
     }
+        
 
     render () {
         return (
