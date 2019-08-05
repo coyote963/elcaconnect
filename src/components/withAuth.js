@@ -5,9 +5,17 @@ import Navbar from './Navbar';
 export const AuthContext = React.createContext(null);
 const withAuth = (WrappedComponent) => {
     class AuthComponent extends React.Component {
-        state = {
-            userAuth : null
-        };
+        constructor (props) {
+            super(props);
+            this.clearUser = () => {
+                this.setState({clearUser : null});
+            }
+            this.state = {
+                userAuth : null,
+                clearUser : this.clearUser
+            }
+        }
+        
         componentDidMount() {
             const jwt = getJwt();
             if (!jwt) {

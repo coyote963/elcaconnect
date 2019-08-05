@@ -5,6 +5,7 @@ import Index from './components/Index'
 import Login from './components/Login'
 import Register from './components/Register'
 import Prayer from './components/Prayer/Prayer'
+import Hymn from './components/Hymn/Hymn'
 import Profile from './components/Profile'
 import withAuth from './components/withAuth'
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
             <Route path="/register/" exact component={Register} />
             <Route path="/profile" component={withAuth(Profile)} />
             <Route path="/prayer" component={withAuth(Prayer)} />
+            <Route path="/hymn" component={withAuth(Hymn)} />
           </Router>
       </div>
     );

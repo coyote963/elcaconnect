@@ -30,6 +30,7 @@ class Register extends React.Component {
         })
         .then(response => {
             console.log(response);
+            this.props.router.history.push('/login')
         })
         .catch(error => {
             this.setState({

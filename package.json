@@ -10,6 +10,7 @@
     "react-json-view": "^1.19.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-spinners": "^0.5.13",
     "rjv": "^2.4.0"
   },
   "scripts": {

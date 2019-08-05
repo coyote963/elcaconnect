@@ -22,12 +22,14 @@ class Profile extends React.Component {
                     </Link>
                   </div>
                   <div className="col-md-4">
-                    <div className="thumbnail">
-                      <img className="img-thumbnail" src="https://picsum.photos/id/101/640/480" alt="img2"/>
-                      <div className="caption">
-                        <p>Lorem Ipsum</p>
+                    <Link to="/hymn">
+                      <div className="thumbnail">
+                        <img className="img-thumbnail" src="https://picsum.photos/id/101/640/480" alt="img2"/>
+                        <div className="caption">
+                          <p>Request A Hymn</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div><div className="col-md-4">
                     <div className="thumbnail">
                       <img className="img-thumbnail" src="https://picsum.photos/id/1019/640/480" alt="img3"/>

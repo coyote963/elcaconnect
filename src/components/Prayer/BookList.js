@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import JsonViewer from 'react-json-view'
+import Spinner from '../../helpers/Spinner'
 class BookList extends React.Component {
     constructor(props) {
         super(props)
@@ -10,8 +10,8 @@ class BookList extends React.Component {
     }
     componentDidUpdate(prevProps) {
         
-        if (this.props.currentStep !== prevProps.currentStep && this.props.currentStep === 2) {
-            axios.get(process.env.REACT_APP_SERVER_URL + "bible/" + this.props.bible_id)
+        if (this.props.bible.currentStep !== prevProps.bible.currentStep && this.props.bible.currentStep === 2) {
+            axios.get(process.env.REACT_APP_SERVER_URL + "bible/" + this.props.bible.bible_id)
             .then(response => {
                 this.setState({book_list : response.data})
             })
@@ -28,26 +28,26 @@ class BookList extends React.Component {
         this.props.setStep(current_step)
     }
     render () {
-
-        if (this.props.currentStep !== 2) {
+        
+        if (this.props.bible.currentStep !== 2) {
             return null
         }
         if (this.state.book_list === null) {
-            return (<h1>Loading...</h1>)
+            return (<Spinner />)
         }
         return(
             <div>
                 <div className="row">
-                    <span class="align-text-bottom">Navigate to &#9658;</span>
+                    <span className="align-text-bottom">Navigate to ></span>
                     <br></br>
                     <button className="btn btn-link p-0" 
                         onClick={this.handleNavClick.bind(this, 1)}>
-                        {this.props.bible_abbr}
+                        {this.props.bible.bible_abbr}
                     </button>
                 </div>
-                
+                <h5>Select a Book</h5>
                 {this.state.book_list.map((book)=>
-                    <div className="card mt-5">
+                    <div className="card mt-3">
                         <div className="card-body">
                             <h5 className="card-title">
                                 [{book.abbreviation}] - {book.name}
