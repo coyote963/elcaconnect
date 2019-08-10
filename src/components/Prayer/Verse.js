@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
+import getHeader from '../../helpers/get-header'
+import { AuthContext } from '../withAuth';
 class Verse extends React.Component {
     constructor(props) {
         super(props)
@@ -11,7 +13,7 @@ class Verse extends React.Component {
     componentDidUpdate(prevProps) {
         
         if (this.props.bible.currentStep !== prevProps.bible.currentStep && this.props.bible.currentStep === 5) {
-            axios.get(process.env.REACT_APP_SERVER_URL + "bible/versecontent/" + this.props.bible.bible_id + "/" + this.props.bible.verse_id)
+            axios.get(process.env.REACT_APP_SERVER_URL + "bible/versecontent/" + this.props.bible.bible_id + "/" + this.props.bible.verse_id, getHeader())
             .then(response => {
                 this.setState({verse : response.data})
             })
@@ -25,6 +27,19 @@ class Verse extends React.Component {
         this.props.setStep(current_step)
     }
 
+    handleSubmit () {
+        axios.post(process.env.REACT_APP_SERVER_URL + "versesuggest/", {
+            user : this.context.userAuth._id,
+            bibleId : this.state.verse.bibleId,
+            bookId : this.state.verse.bookId,
+            chapterId : this.state.verse.chapterId,
+            verseId : this.state.verse.verseId,
+            comment : ""
+        }, getHeader())
+        .catch(err => {
+            console.log(err)
+        })
+    }
     render () {
         
         if (this.props.bible.currentStep !== 5) {
@@ -66,7 +81,7 @@ class Verse extends React.Component {
                     </button>
                 </div>
                 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -87,13 +102,16 @@ class Verse extends React.Component {
                             
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Submit</button>
+                                <button onClick={this.handleSubmit.bind(this)} type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         )
     }
 }
+
+
+Verse.contextType = AuthContext;
 export default Verse;

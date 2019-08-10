@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
+import getHeader from '../../helpers/get-header'
 class VerseList extends React.Component {
     constructor(props) {
         super(props)
@@ -11,7 +12,7 @@ class VerseList extends React.Component {
     }
     componentDidUpdate(prevProps) {
         if (this.props.bible.currentStep !== prevProps.bible.currentStep && this.props.bible.currentStep === 4) {
-            axios.get(process.env.REACT_APP_SERVER_URL + "bible/chaptercontent/" + this.props.bible.bible_id + "/" + this.props.bible.chapter_id)
+            axios.get(process.env.REACT_APP_SERVER_URL + "bible/chaptercontent/" + this.props.bible.bible_id + "/" + this.props.bible.chapter_id, getHeader())
             .then(response => {
                 this.setState({content : response.data.content})
             })
@@ -19,7 +20,7 @@ class VerseList extends React.Component {
                 console.log(err)
             })
             
-            axios.get(process.env.REACT_APP_SERVER_URL + "bible/verse/" + this.props.bible.bible_id + "/" + this.props.bible.chapter_id)
+            axios.get(process.env.REACT_APP_SERVER_URL + "bible/verse/" + this.props.bible.bible_id + "/" + this.props.bible.chapter_id, getHeader())
             .then(response => {
                 this.setState({verse_list : response.data})
             })

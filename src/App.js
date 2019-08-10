@@ -2,8 +2,8 @@ import './App.css';
 import React from 'react';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Index from './components/Index' 
-import Login from './components/Login'
-import Register from './components/Register'
+import Login from './components/Auth/Login'
+import Register from './components/Auth/Register'
 import Prayer from './components/Prayer/Prayer'
 import Hymn from './components/Hymn/Hymn'
 import Profile from './components/Profile'

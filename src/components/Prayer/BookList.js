@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
+import getHeader from '../../helpers/get-header'
+
 class BookList extends React.Component {
     constructor(props) {
         super(props)
@@ -11,7 +13,7 @@ class BookList extends React.Component {
     componentDidUpdate(prevProps) {
         
         if (this.props.bible.currentStep !== prevProps.bible.currentStep && this.props.bible.currentStep === 2) {
-            axios.get(process.env.REACT_APP_SERVER_URL + "bible/" + this.props.bible.bible_id)
+            axios.get(process.env.REACT_APP_SERVER_URL + "bible/" + this.props.bible.bible_id, getHeader())
             .then(response => {
                 this.setState({book_list : response.data})
             })

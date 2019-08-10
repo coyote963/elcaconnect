@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
+import getHeader from '../../helpers/get-header'
 class BibleList extends React.Component {
     constructor(props) {
         super(props)
@@ -10,7 +11,8 @@ class BibleList extends React.Component {
     }
     componentDidMount () {
         if (this.props.currentStep === 1) {
-            axios.get(process.env.REACT_APP_SERVER_URL + "bible")
+        
+            axios.get(process.env.REACT_APP_SERVER_URL + "bible", getHeader())
             .then(response => {
                 this.setState({bible_list : response.data})
             })
