@@ -39,28 +39,34 @@ class BookList extends React.Component {
         }
         return(
             <div>
-                <div className="row">
-                    <span className="align-text-bottom">Navigate to ></span>
-                    <br></br>
-                    <button className="btn btn-link p-0" 
-                        onClick={this.handleNavClick.bind(this, 1)}>
-                        {this.props.bible.bible_abbr}
-                    </button>
-                </div>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <button className="btn btn-link p-0" 
+                            onClick={this.handleNavClick.bind(this, 1)}>
+                                Bible: {this.props.bible.bible_abbr}
+                            </button>
+                        </li>
+                    </ol>
+                </nav>
+                    
+                
                 <h5>Select a Book</h5>
-                {this.state.book_list.map((book)=>
-                    <div className="card mt-3">
-                        <div className="card-body">
-                            <h5 className="card-title">
-                                [{book.abbreviation}] - {book.name}
-                            </h5>
-                            <p className="card-text">
-                                {book.nameLong} 
-                            </p>
-                            <button onClick={this.handleClick.bind(this, book.id)} className="btn btn-primary">View section</button>
+                <div className="d-flex flex-wrap">
+                    {this.state.book_list.map((book)=>
+                        <div className="card col-3 mt-6">
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    [{book.abbreviation}] - {book.name}
+                                </h5>
+                                <p className="card-text">
+                                    {book.nameLong} 
+                                </p>
+                                <button onClick={this.handleClick.bind(this, book.id)} className="btn btn-primary">View section</button>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
         )

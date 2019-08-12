@@ -45,31 +45,35 @@ class VerseList extends React.Component {
         return(
             <div>
                 
-                <div className="row">
-                    <span>Navigate to ></span>
-                    <br></br>
-                    <button className="btn btn-link p-0" 
-                        onClick={this.handleNavClick.bind(this, 1)}>
-                        {this.props.bible.bible_abbr}
-                    </button>
-                    <span>></span>
-                    <button className="btn btn-link p-0" 
-                        onClick={this.handleNavClick.bind(this, 2)}>
-                        {this.props.bible.book_id}
-                    </button>
-                    <span>></span>
-                    <button className="btn btn-link p-0" 
-                        onClick={this.handleNavClick.bind(this, 3)}>
-                        {this.props.bible.chapter_id}
-                    </button>
-                </div>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <button className="btn btn-link p-0" 
+                            onClick={this.handleNavClick.bind(this, 1)}>
+                                Bible: {this.props.bible.bible_abbr}
+                            </button>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <button className="btn btn-link p-0" 
+                            onClick={this.handleNavClick.bind(this, 2)}>
+                                Book: {this.props.bible.book_id}
+                            </button>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <button className="btn btn-link p-0" 
+                            onClick={this.handleNavClick.bind(this, 3)}>
+                                Chapter: {this.props.bible.chapter_id}
+                            </button>
+                        </li>
+                    </ol>
+                </nav>
                 <h5>Select the Verse</h5>
                 
                 {this.state.verse_list.map((verse, index) => 
                     <button onClick={this.handleClick.bind(this, verse.id)} type="button" className="btn btn-outline-primary mx-1 my-1">{verse.id}</button>
                 )}
                 <h5>For reference: </h5>
-                <div dangerouslySetInnerHTML={{__html: this.state.content}} />
+                <div className="scripture-styles" dangerouslySetInnerHTML={{__html: this.state.content}} />
             </div>
 
         )

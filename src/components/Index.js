@@ -10,6 +10,7 @@ class Index extends React.Component {
                         <div className="row h-100 align-items-center">
                             <div className="col-12 text-center">
                                 <h1 className="font-weight-heavy text-white">ADLA Connect</h1>
+                                <button class="btn btn-primary">Get Started</button>
                             </div>
                         </div>
                     </div>
@@ -19,15 +20,15 @@ class Index extends React.Component {
                         <div className="row">
                             <div className="col-sm">
                                 <h2 className="font-weight-light">Connect with fellow ELCA Members</h2>
-                                <p>Message them directly and socialize!</p>
+                                <p>We aim to connect members of churches, one person at a time. Register an account and be instantly connected with other members of your congregation! Send messages to other users and customize your profile!</p>
                             </div>
                             <div className="col-sm">
-                                <h2 className="font-weight-light">Make Requests</h2>
-                                <p>Tell your church what you want in a service</p>
+                                <h2 className="font-weight-light">Prayer Requests</h2>
+                                <p>Have a prayer for someone? Let your request be heard by directly sending it to your pastor! It is quick, secure and easy. </p>
                             </div>
                             <div className="col-sm">
-                                <h2 className="font-weight-light">Support Your Church</h2>
-                                <p>Donations help local churches run smoothly</p>
+                                <h2 className="font-weight-light">Verses and Hymns</h2>
+                                <p>With a built in bible viewer, search for your favorite verses, save them and let your pastors know! Additionally with over 200,000 hymns, you'll be sure to find your favorite hymns as well!</p>
                             </div>
                         </div>
                         

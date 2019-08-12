@@ -38,32 +38,37 @@ class ChapterList extends React.Component {
         }
         return(
             <div>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <button className="btn btn-link p-0" 
+                            onClick={this.handleNavClick.bind(this, 1)}>
+                                Bible: {this.props.bible.bible_abbr}
+                            </button>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <button className="btn btn-link p-0" 
+                            onClick={this.handleNavClick.bind(this, 2)}>
+                                Book: {this.props.bible.book_id}
+                            </button>
+                        </li>
+                    </ol>
+                </nav>
                 
-                <div className="row">
-                    <span>Navigate to ></span>
-                    <br></br>
-                    <button className="btn btn-link p-0" 
-                        onClick={this.handleNavClick.bind(this, 1)}>
-                        {this.props.bible.bible_abbr}
-                    </button>
-                    <span>></span>
-                    <button className="btn btn-link p-0" 
-                        onClick={this.handleNavClick.bind(this, 2)}>
-                        {this.props.bible.book_id}
-                    </button>
-                </div>
                 <h5>Select a Chapter</h5>
-                {this.state.chapter_list.map((chapter)=>
-                    <div className="card mt-3">
-                        <div className="card-body">
-                            <h5 className="card-title">
-                                {chapter.reference}
-                            </h5>
+                <div className="d-flex flex-wrap">
+                    {this.state.chapter_list.map((chapter)=>
+                        <div className="card col-3 m-1">
+                            <div className="card-body">
+                                <h5 className="card-title">
+                                    {chapter.reference}
+                                </h5>
+                                <button onClick={this.handleClick.bind(this, chapter.id)} className="btn btn-primary">View section</button>
+                            </div>
                             
                         </div>
-                        <button onClick={this.handleClick.bind(this, chapter.id)} className="btn btn-primary">View section</button>
-                    </div>
-                )}
+                    )}
+                </div>
                 
             </div>
 
