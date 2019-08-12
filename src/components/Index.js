@@ -9,7 +9,7 @@ class Index extends React.Component {
                     <div className="container h-100">
                         <div className="row h-100 align-items-center">
                             <div className="col-12 text-center">
-                                <h1 className="font-weight-heavy text-white">ELCA Connect</h1>
+                                <h1 className="font-weight-heavy text-white">ADLA Connect</h1>
                             </div>
                         </div>
                     </div>

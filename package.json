@@ -4,13 +4,16 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "bootstrap-table": "^1.15.3",
     "dotenv": "^8.0.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-json-view": "^1.19.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "react-spinners": "^0.5.13",
+    "react-table": "^6.10.0",
     "rjv": "^2.4.0"
   },
   "scripts": {

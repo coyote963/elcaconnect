@@ -14,13 +14,13 @@ class HymnResults extends React.Component {
     }
     componentDidMount () {
         this.setState({ loading : true})
-            axios.get(process.env.REACT_APP_SERVER_URL + "hymn/search/" + this.props.searchTerm )
-            .then(response => {
-                this.setState({ results : response.data , loading : false })
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        axios.get(process.env.REACT_APP_SERVER_URL + "hymn/search/" + this.props.searchTerm )
+        .then(response => {
+            this.setState({ results : response.data , loading : false })
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
     componentDidUpdate (prevProps) {
         if (prevProps.searchTerm !== this.props.searchTerm) {

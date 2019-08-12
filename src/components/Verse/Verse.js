@@ -7,11 +7,12 @@ class Verse extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            verse : null
+            verse : null,
+            comment : ""
         }
+        this.handleChange = this.handleChange.bind(this)
     }
     componentDidUpdate(prevProps) {
-        
         if (this.props.bible.currentStep !== prevProps.bible.currentStep && this.props.bible.currentStep === 5) {
             axios.get(process.env.REACT_APP_SERVER_URL + "bible/versecontent/" + this.props.bible.bible_id + "/" + this.props.bible.verse_id, getHeader())
             .then(response => {
@@ -27,14 +28,21 @@ class Verse extends React.Component {
         this.props.setStep(current_step)
     }
 
+    handleChange (event) {
+        this.setState({
+            comment : event.target.value
+        })
+    }
+
     handleSubmit () {
         axios.post(process.env.REACT_APP_SERVER_URL + "versesuggest/", {
             user : this.context.userAuth._id,
             bibleId : this.state.verse.bibleId,
             bookId : this.state.verse.bookId,
             chapterId : this.state.verse.chapterId,
-            verseId : this.state.verse.verseId,
-            comment : ""
+            verseId : this.props.bible.verse_id,
+            bibleAbbr : this.props.bible.bible_abbr,
+            comment : this.state.comment
         }, getHeader())
         .catch(err => {
             console.log(err)
@@ -95,7 +103,7 @@ class Verse extends React.Component {
                                 <form>
                                     <div class="form-group">
                                         <label for="comments" class="col-form-label">Comments:</label>
-                                        <input type="text" class="form-control" id="recipient-name" />
+                                        <input onChange={this.handleChange} value={this.state.comment} type="text"  class="form-control" id="recipient-name" />
                                     </div>
                                 </form>
                             </div>

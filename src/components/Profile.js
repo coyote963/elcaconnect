@@ -1,6 +1,11 @@
 import React from 'react';
 import {AuthContext} from './withAuth'
 import {Link} from 'react-router-dom'
+import connect from '../assets/connect.png'
+import hymn from '../assets/hymn.jpg'
+import prayer from '../assets/prayer.jpg'
+import profile from '../assets/profile.jpg'
+import verse from '../assets/verse.jpg'
 class Profile extends React.Component {
   render() {
     return (
@@ -12,11 +17,11 @@ class Profile extends React.Component {
                 <hr></hr>
                 <div className="row">
                   <div className="col-md-4">
-                    <Link to="/prayer">
+                    <Link to="/verse">
                       <div className="thumbnail">
-                        <img className="img-thumbnail" src="https://picsum.photos/id/1010/640/480" alt="img1"/>
+                        <img className="img-thumbnail" src={verse} alt="verse"/>
                         <div className="caption">
-                          <p>Prayer Request</p>
+                          <p>Verse Request</p>
                         </div>
                       </div>
                     </Link>
@@ -24,35 +29,40 @@ class Profile extends React.Component {
                   <div className="col-md-4">
                     <Link to="/hymn">
                       <div className="thumbnail">
-                        <img className="img-thumbnail" src="https://picsum.photos/id/101/640/480" alt="img2"/>
+                        <img className="img-thumbnail" src={hymn} alt="hymn"/>
                         <div className="caption">
                           <p>Request A Hymn</p>
                         </div>
                       </div>
                     </Link>
-                  </div><div className="col-md-4">
-                    <div className="thumbnail">
-                      <img className="img-thumbnail" src="https://picsum.photos/id/1019/640/480" alt="img3"/>
-                      <div className="caption">
-                        <p>Lorem Ipsum</p>
+                  </div>
+                  <div className="col-md-4">
+                    <Link to="/history">
+                      <div className="thumbnail">
+                        <img className="img-thumbnail" src={profile} alt="profile"/>
+                        <div className="caption">
+                          <p>View User History</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-4">
-                    <div className="thumbnail">
-                      <img className="img-thumbnail" src="https://picsum.photos/id/1019/640/480" alt="img4"/>
-                      <div className="caption">
-                        <p>Lorem Ipsum</p>
+                    <Link to="/prayer">
+                      <div className="thumbnail">
+                        <img className="img-thumbnail" src={prayer} alt="prayer"/>
+                        <div className="caption">
+                          <p>Request a Prayer</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                   <div className="col-md-4">
                     <div className="thumbnail">
-                      <img className="img-thumbnail" src="https://picsum.photos/id/1024/640/480" alt="img5"/>
+                      <img className="img-thumbnail" src={connect} alt="connect"/>
                       <div className="caption">
-                        <p>Lorem Ipsum</p>
+                        <p>Connect</p>
                       </div>
                     </div>
                   </div><div className="col-md-4">

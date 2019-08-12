@@ -3,18 +3,30 @@ import axios from 'axios'
 import { AuthContext } from '../withAuth';
 import getHeader from '../../helpers/get-header';
 class HymnModal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            comment : "",
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+    
     submitHymn () {
         console.log(getHeader())
         axios.post(process.env.REACT_APP_SERVER_URL + "hymnsuggest/", {
             hymn : this.props.hymn._id,
             user : this.context.userAuth._id,
-            comment : ""
+            comment : this.state.comment
         }, getHeader())
         .catch((err) => {
             console.log(err)
         })
     }
-
+    handleChange(event) {
+        this.setState({
+            comment : event.target.value
+        });
+    }
     render() {
         if (this.props.hymn === null) {
             return null
@@ -55,11 +67,16 @@ class HymnModal extends React.Component {
                                     </tr>
                                 </tbody>
                             </table>
-    
+                            <form>
+                                <div class="form-group">
+                                    <label for="comments" class="col-form-label">Comments:</label>
+                                    <input type="text" value={this.state.comment} onChange={this.handleChange} class="form-control" id="recipient-name" />
+                                </div>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" onClick={this.submitHymn.bind(this)} class="btn btn-primary">Submit Hymn</button>
+                            <button type="button" data-dismiss="modal" onClick={this.submitHymn.bind(this)} class="btn btn-primary">Submit Hymn</button>
                         </div>
                     </div>
                 </div>
