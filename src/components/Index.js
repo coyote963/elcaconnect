@@ -1,6 +1,15 @@
 import React from "react"
 import Navbar from './Navbar';
+import {withRouter } from 'react-router-dom'
 class Index extends React.Component { 
+    constructor(props){
+        super(props)
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick () {
+        this.props.history.push('/login')
+    }
     render () {
         return (
             <div>
@@ -10,7 +19,7 @@ class Index extends React.Component {
                         <div className="row h-100 align-items-center">
                             <div className="col-12 text-center">
                                 <h1 className="font-weight-heavy text-white">ADLA Connect</h1>
-                                <button class="btn btn-primary">Get Started</button>
+                                <button onClick={this.handleClick} class="btn btn-outline-light">Get Started</button>
                             </div>
                         </div>
                     </div>
@@ -39,4 +48,4 @@ class Index extends React.Component {
     }
 }
 
-export default Index;
+export default withRouter(Index);

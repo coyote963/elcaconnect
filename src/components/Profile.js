@@ -1,11 +1,12 @@
 import React from 'react';
 import {AuthContext} from './withAuth'
 import {Link} from 'react-router-dom'
-import connect from '../assets/connect.jpg'
+import connect from '../assets/connect.png'
 import hymn from '../assets/hymn.jpg'
 import prayer from '../assets/prayer.jpg'
 import profile from '../assets/profile.jpg'
 import verse from '../assets/verse.jpg'
+import support from '../assets/support.jpg'
 class Profile extends React.Component {
   render() {
     return (
@@ -62,16 +63,18 @@ class Profile extends React.Component {
                     <div className="thumbnail">
                       <img className="img-thumbnail" src={connect} alt="connect"/>
                       <div className="caption">
-                        <p>Connect</p>
+                        <p>Connect (coming soon)</p>
                       </div>
                     </div>
                   </div><div className="col-md-4">
-                    <div className="thumbnail">
-                      <img className="img-thumbnail" src="https://picsum.photos/id/1018/640/480" alt="img6"/>
-                      <div className="caption">
-                        <p>Lorem Ipsum</p>
+                    <Link to="/admin">
+                      <div className="thumbnail">
+                        <img className="img-thumbnail" src={support} alt="support"/>
+                        <div className="caption">
+                          <p>Admin</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>

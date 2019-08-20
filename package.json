@@ -5,10 +5,13 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap-table": "^1.15.3",
+    "d3": "^5.9.7",
     "dotenv": "^8.0.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-csv": "^1.1.1",
     "react-dom": "^16.8.6",
+    "react-feather": "^2.0.3",
     "react-json-view": "^1.19.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
