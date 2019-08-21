@@ -4,6 +4,7 @@ import { AuthContext } from '../withAuth'
 import Spinner from '../../helpers/Spinner'
 import moment from 'moment'
 import getHeader from '../../helpers/get-header'
+import ReactTable from 'react-table'
 class PrayerHistory extends React.Component {
     constructor(props) {
         super(props)
@@ -22,22 +23,29 @@ class PrayerHistory extends React.Component {
     }
 
     render () {
+        if (this.props.view !== 'prayer') {
+            return null
+        }
         if (this.state.prayers === null ) {
             return (<Spinner />)
         }
+        const columns =[{
+            id : 'prayer',
+            Header: 'Prayer',
+            accessor : 'comment'
+        }, {
+            id : 'dateCreated',
+            Header: 'Date Submitted',
+            accessor : d => moment(d.dateCreated).format("MMM DD, YYYY HH:MM a")
+        }]
         return (
-            <div className="container">
-                <div class="card">
-                    <div class="card-body">
-                        <h5>Your Prayers</h5>
-                        {this.state.prayers.map((prayer) => 
-                            <blockquote class="blockquote text-center">
-                            <p class="mb-0">{prayer.comment}</p>
-                            <footer class="blockquote-footer"><cite>{moment(prayer.dateCreated).format("MMM DD, YYYY HH:MM a")}</cite></footer>
-                            </blockquote>
-                        )}
-                    </div>
-                    
+            <div className="card text-center">
+                <div className="card-body">
+                    <ReactTable
+                        className="-striped -highlight"
+                        data={this.state.prayers}
+                        columns={columns}
+                    />
                 </div>
             </div>
         )

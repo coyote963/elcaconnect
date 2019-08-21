@@ -24,6 +24,9 @@ class VerseHistory extends React.Component {
     }
 
     render() {
+        if (this.props.view !== 'verse') {
+            return null
+        }
         if (this.state.suggestions === null) {
             return (<Spinner />)
         }

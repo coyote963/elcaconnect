@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
+import getHeader from '../../helpers/get-header'
 class TopHymnList extends React.Component {
     constructor (props) {
         super(props);
@@ -11,7 +12,7 @@ class TopHymnList extends React.Component {
     }
 
     componentDidMount () {
-        axios.get(process.env.REACT_APP_SERVER_URL + 'hymn/')
+        axios.get(process.env.REACT_APP_SERVER_URL + 'hymn/', getHeader())
             .then(response => {
                 this.setState({topHymnList : response.data})
             })

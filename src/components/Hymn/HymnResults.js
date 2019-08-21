@@ -3,6 +3,8 @@ import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
 import HymnDetail from './HymnDetail'
 import HymnModal from './HymnModal'
+import getHeader from '../../helpers/get-header'
+
 class HymnResults extends React.Component {
     constructor(props) {
         super(props)
@@ -14,7 +16,7 @@ class HymnResults extends React.Component {
     }
     componentDidMount () {
         this.setState({ loading : true})
-        axios.get(process.env.REACT_APP_SERVER_URL + "hymn/search/" + this.props.searchTerm )
+        axios.get(process.env.REACT_APP_SERVER_URL + "hymn/search/" + this.props.searchTerm, getHeader())
         .then(response => {
             this.setState({ results : response.data , loading : false })
         })
@@ -25,7 +27,7 @@ class HymnResults extends React.Component {
     componentDidUpdate (prevProps) {
         if (prevProps.searchTerm !== this.props.searchTerm) {
             this.setState({ loading : true})
-            axios.get(process.env.REACT_APP_SERVER_URL + "hymn/search/" + this.props.searchTerm )
+            axios.get(process.env.REACT_APP_SERVER_URL + "hymn/search/" + this.props.searchTerm, getHeader())
             .then(response => {
                 this.setState({ results : response.data , loading : false })
             })

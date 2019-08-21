@@ -23,9 +23,13 @@ class HymnHistory extends React.Component {
     }
 
     render() {
+        if (this.props.view !== 'hymn') {
+            return null
+        }
         if (this.state.suggestions === null) {
             return (<Spinner />)
         }
+        
         const columns = [{
             id : 'title',
             Header: 'Title',
@@ -41,6 +45,7 @@ class HymnHistory extends React.Component {
         }]
 
         return (
+            
             <div className="card text-center">
                 <div className="card-header">Hymns Submitted</div>
                 <div className="card-body">

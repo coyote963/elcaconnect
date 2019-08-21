@@ -7,6 +7,7 @@ import prayer from '../assets/prayer.jpg'
 import profile from '../assets/profile.jpg'
 import verse from '../assets/verse.jpg'
 import support from '../assets/support.jpg'
+import { hasRole } from '../helpers/has-role';
 class Profile extends React.Component {
   render() {
     return (
@@ -66,16 +67,19 @@ class Profile extends React.Component {
                         <p>Connect (coming soon)</p>
                       </div>
                     </div>
-                  </div><div className="col-md-4">
-                    <Link to="/admin">
-                      <div className="thumbnail">
-                        <img className="img-thumbnail" src={support} alt="support"/>
-                        <div className="caption">
-                          <p>Admin</p>
-                        </div>
-                      </div>
-                    </Link>
                   </div>
+                  {hasRole("admin", value.userAuth) &&
+                    <div className="col-md-4">
+                      <Link to="/admin">
+                        <div className="thumbnail">
+                          <img className="img-thumbnail" src={support} alt="support"/>
+                          <div className="caption">
+                            <p>Admin</p>
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  }
                 </div>
               </div>
             )}
