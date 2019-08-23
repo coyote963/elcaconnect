@@ -39,15 +39,13 @@ class PrayerHistory extends React.Component {
             accessor : d => moment(d.dateCreated).format("MMM DD, YYYY HH:MM a")
         }]
         return (
-            <div className="card text-center">
-                <div className="card-body">
-                    <ReactTable
-                        className="-striped -highlight"
-                        data={this.state.prayers}
-                        columns={columns}
-                    />
-                </div>
-            </div>
+            
+            <ReactTable
+                className="-striped -highlight"
+                data={this.state.prayers}
+                columns={columns}
+            />
+                
         )
     }
 }

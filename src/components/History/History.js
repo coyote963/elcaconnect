@@ -14,7 +14,7 @@ class History extends React.Component {
     }
     render() {
         return (
-            <div p-3>
+            <div className="container">
                 <h1 className="text-center">Your History</h1>
                 <div class="card text-center">
                     <div class="card-header">

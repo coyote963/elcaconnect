@@ -55,16 +55,13 @@ class VerseHistory extends React.Component {
         }]
 
         return (
-            <div className="card text-center">
-                <div className="card-header">Submitted Verses</div>
-                <div className="card-body">
-                    <ReactTable 
-                        className="-striped -highlight"
-                        data={this.state.suggestions}
-                        columns={columns}
-                    />
-                </div>
-            </div>    
+            
+            <ReactTable 
+                className="-striped -highlight"
+                data={this.state.suggestions}
+                columns={columns}
+            />
+                   
         )
     }
 }

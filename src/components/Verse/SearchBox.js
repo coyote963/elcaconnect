@@ -16,6 +16,7 @@ class SearchBox extends React.Component {
         })
     }
     onSubmit = e => {
+        e.preventDefault()
         axios.get(process.env.REACT_APP_SERVER_URL + "bible/search/" + this.props.bible.bible_id + "/" + this.state.query, getHeader())
         .then(res => {
             this.props.handleSearch(res.data)
@@ -26,14 +27,15 @@ class SearchBox extends React.Component {
     }
     render () {
         return (
-            <div className="form-inline row">
-                <input value={this.state.query} 
+            <form onSubmit={this.onSubmit} className="form-inline row">
+                <input value={this.state.query}
+                    type="search" 
                     onChange={this.onChange}
                     class="form-control" 
                     placeholder={"Search " + (this.props.bible.bible_abbr)  + " ..."}
                 />
-                <button onClick={this.onSubmit} className="btn btn-primary py-1 px-2"><Search /></button>
-            </div>
+                <button type="submit" value="Submit" className="btn btn-primary py-1 px-2"><Search /></button>
+            </form>
         )
     }
 }

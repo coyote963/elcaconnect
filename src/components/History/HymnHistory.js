@@ -46,16 +46,13 @@ class HymnHistory extends React.Component {
 
         return (
             
-            <div className="card text-center">
-                <div className="card-header">Hymns Submitted</div>
-                <div className="card-body">
-                    <ReactTable
-                        className="-striped -highlight"
-                        data={this.state.suggestions}
-                        columns={columns}
-                    />
-                </div>
-            </div>
+            
+            <ReactTable
+                className="-striped -highlight"
+                data={this.state.suggestions}
+                columns={columns}
+            />
+                
         )
     }
 }

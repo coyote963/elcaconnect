@@ -79,7 +79,13 @@ class Prayer extends React.Component {
                 <div className="container">
                     <div className="row d-flex justify-content-between">
                         <h1>Results</h1>
-                        <button onClick={this.handleSearchClose} className="btn btn-outline-secondary"><Book /> Browse</button>
+                        <div className="row">
+                            <button onClick={this.handleSearchClose} className="btn btn-outline-secondary p-1 m-5"><Book /> Browse</button>
+                            <SearchBox
+                                handleSearch={this.handleSearch}
+                                bible={this.state}/>
+                            
+                        </div>
                     </div>
                     {this.state.results.map((result)=> {
                         return (<div className="card mt-3">
