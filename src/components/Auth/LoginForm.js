@@ -26,11 +26,14 @@ class LoginForm extends React.Component {
             this.props.history.push('/profile');
         })
         .catch(error => {
-            if (error.response)
-                if (error.response.status === 404)
-                {this.setState({
+            
+            if (error.response.status)
+            {
+                if (error.response.status === 404){
+                    this.setState({
                     errors : { email : "email not found"}
-                })}
+                    })
+                }
                 if (error.response.status === 400) {
                     this.setState({
                         errors : {password : "password not found"}
@@ -41,6 +44,11 @@ class LoginForm extends React.Component {
                         errors : {password : "an error occurred"}
                     })
                 }
+            } else {
+                this.setState({
+                    errors : {password : "a server error occurred"}
+                })
+            }
         })
     }
         

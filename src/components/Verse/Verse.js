@@ -3,6 +3,7 @@ import axios from 'axios'
 import Spinner from '../../helpers/Spinner'
 import getHeader from '../../helpers/get-header'
 import { AuthContext } from '../withAuth';
+import VerseModal from './VerseModal';
 class Verse extends React.Component {
     constructor(props) {
         super(props)
@@ -95,7 +96,12 @@ class Verse extends React.Component {
                     </button>
                 </div>
                 
-                <div class="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <VerseModal
+                    verse={this.state.verse}
+                    bible={this.props.bible}
+                />
+                {/* <div class="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -120,7 +126,7 @@ class Verse extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         )
     }

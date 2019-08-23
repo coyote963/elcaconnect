@@ -34,7 +34,6 @@ class BibleList extends React.Component {
         return(
             <div>
                 <h5>Select a Bible</h5>
-
                 {this.state.bible_list.map((bible)=>
                     <div className="card mt-3">
                         <div className="card-body">

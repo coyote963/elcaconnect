@@ -24,9 +24,6 @@ class Prayer extends React.Component {
         }, getHeader())
         .then(() => this.props.history.push('/history'))
         .catch(err => console.log(err))
-
-        
-        
     }
     render() {
         return (
@@ -51,4 +48,4 @@ class Prayer extends React.Component {
     }
 }
 Prayer.contextType = AuthContext;
-export default withRouter(Prayer)
+export default withRouter(Prayer);

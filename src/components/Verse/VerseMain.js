@@ -4,7 +4,9 @@ import BookList from './BookList'
 import ChapterList from './ChapterList';
 import VerseList from './VerseList'
 import Verse from './Verse';
-
+import SearchBox from './SearchBox'
+import VerseModal from './VerseModal'
+import { Book } from 'react-feather'
 class Prayer extends React.Component {
     constructor(props) {
         super(props)
@@ -14,7 +16,9 @@ class Prayer extends React.Component {
             bible_id: "",
             book_id: "",
             chapter_id: "",
-            verse_id: ""
+            verse_id: "",
+            results : null,
+            bibleView : true
         }
     }
 
@@ -52,10 +56,67 @@ class Prayer extends React.Component {
             currentStep : currentStep
         })
     }
+    
+    handleSearch = (results) => {
+        this.setState({
+            bibleView : false,
+            results : results,
+            currentStep : 1
+        })
+        
+    }
+
+    handleSearchClose = () => {
+        this.setState({
+            bibleView : true
+        })
+    }
+
     render() {
+        if (!this.state.bibleView) {
+            
+            return (
+                <div className="container">
+                    <div className="row d-flex justify-content-between">
+                        <h1>Results</h1>
+                        <button onClick={this.handleSearchClose} className="btn btn-outline-secondary"><Book /> Browse</button>
+                    </div>
+                    {this.state.results.map((result)=> {
+                        return (<div className="card mt-3">
+                            <div className="card-body">
+                                <button className="btn" data-toggle="modal" data-target="#exampleModal">
+                                    <h5 className="card-title">
+                                        {result.text}
+                                    </h5>
+                                </button>
+                                <p >
+                                    ~{result.reference}
+                                </p>
+                            </div>
+                            <VerseModal
+                                verse={result}
+                                bible={{
+                                    verse_id : result.id,
+                                    bible_abbr : this.state.bible_abbr
+                                }}
+                            />
+                        </div>)  
+                    }
+                    )}
+                    
+                </div>
+            )
+        }
         return (
             <div className="container">
-                <h1>Request a Prayer</h1>
+                <div className="row d-flex justify-content-between">
+                    <h1>Request a Prayer</h1>
+                    {this.state.currentStep > 1 && 
+                        <SearchBox
+                            handleSearch={this.handleSearch}
+                            bible={this.state}/>  
+                    }
+                </div>
                 <h3>(Step {this.state.currentStep} of 5)</h3>
                 <hr></hr>
                 <BibleList 
