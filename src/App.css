@@ -41,3 +41,8 @@
 }
 
 rect.bar { fill: steelblue; }
+
+.chatbox {
+  height: 25rem;
+  overflow-y: auto;
+}

@@ -14,6 +14,7 @@ import Prayer from './components/Prayer/Prayer'
 import Footer from './components/Footer'
 import Admin from './components/Admin/Admin'
 import Logout from './components/Auth/Logout'
+import Connect from './components/Connect/Connect'
 class App extends React.Component {
   
   render () {
@@ -31,6 +32,7 @@ class App extends React.Component {
               <Route path="/history" component={withAuth(History)} />
               <Route path="/prayer" component={withAuth(Prayer)} />
               <Route path="/admin" component={Admin} />
+              <Route path="/connect" component={withAuth(Connect)} />
               <Route path="/logout" component={Logout} />
             </Router>
           </div>

@@ -61,12 +61,14 @@ class Profile extends React.Component {
                     </Link>
                   </div>
                   <div className="col-md-4">
-                    <div className="thumbnail">
-                      <img className="img-thumbnail" src={connect} alt="connect"/>
-                      <div className="caption">
-                        <p>Connect (coming soon)</p>
+                    <Link to="/connect">
+                      <div className="thumbnail">
+                        <img className="img-thumbnail" src={connect} alt="connect"/>
+                        <div className="caption">
+                          <p>Connect</p>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                   {hasRole("admin", value.userAuth) &&
                     <div className="col-md-4">
