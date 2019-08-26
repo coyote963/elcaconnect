@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 require('dotenv').config();
 
@@ -28,17 +29,16 @@ class Register extends React.Component {
             first_name : this.state.first_name,
             last_name : this.state.last_name
         })
-        .then(response => {
-            console.log(response);
-            this.props.router.history.push('/login')
+        .then(res => {
+            this.props.history.push('/')
         })
         .catch(error => {
             this.setState({
                 errors : error.response.data
             })
         })
+        
     }
-    
     render () {
         const { errors } = this.state;
         return (
@@ -99,7 +99,7 @@ class Register extends React.Component {
                             onChange={this.onChange}
                             value={this.state.password2}
                             error={errors.password2}
-                            type="password" className={"form-control " + (this.state.errors.password1 ? 'is-invalid' : '')} id="password2" />
+                            type="password" className={"form-control " + (this.state.errors.password2 ? 'is-invalid' : '')} id="password2" />
                         <div className="invalid-feedback">
                             {this.state.errors.password2}
                         </div>
@@ -113,4 +113,4 @@ class Register extends React.Component {
     }
 }
 
-export default Register
+export default withRouter(Register)
