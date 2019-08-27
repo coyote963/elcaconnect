@@ -52,7 +52,7 @@ class Register extends React.Component {
                                 onChange = {this.onChange}
                                 value = { this.state.first_name }
                                 error = { errors.first_name }
-                                type="text" className={"form-control " + (this.state.errors.last_name ? 'is-invalid' : '')} id="first_name" placeholder="Enter your first name" />
+                                type="text" className={"form-control " + (this.state.errors.first_name ? 'is-invalid' : '')} id="first_name" placeholder="Enter your first name" />
                                 <div className="invalid-feedback">
                                     {this.state.errors.first_name}
                                 </div>
